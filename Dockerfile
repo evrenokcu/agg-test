@@ -1,21 +1,20 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10-slim
+# Use an official Python base image
+FROM python:3.9-slim
 
-# Set the working directory to /app
+# Create a working directory
 WORKDIR /app
 
-# Copy the requirements file from the scripts directory
-COPY scripts/requirements.txt .
+# Copy requirements
+COPY requirements.txt .
 
-# Install any needed packages specified in requirements.txt
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the Python script directory to /app
-COPY scripts/ .
+# Copy your code
+COPY main.py .
 
-# Use the environment variable $PORT for exposing the container's port
+# Expose a default port for local dev/documentation; not strictly needed for Cloud Run
+EXPOSE 8080
 
-EXPOSE $PORT
-
-# Run the Python server when the container launches
-CMD ["python", "test.py"]
+# Start the FastAPI app with Uvicorn using the runtime PORT environment variable
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}"]
