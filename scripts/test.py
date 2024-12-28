@@ -7,6 +7,7 @@ app = FastAPI()
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
+    env_variable = os.getenv("MERGE_PROMPT", "Environment variable not set")
     """
     Return a simple HTML page.
     """
@@ -19,6 +20,7 @@ async def root():
         <body>
             <h1>Welcome to the LLM Call Server</h1>
             <p>This is a basic FastAPI server.</p>
+            <p>Environment Variable: {env_variable}</p>
         </body>
     </html>
     """
