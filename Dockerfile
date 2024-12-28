@@ -18,4 +18,4 @@ COPY scripts/ .
 EXPOSE $PORT
 
 # Run the Python server when the container launches
-CMD ["python", "test.py"]
+CMD ["python", "llm-call-server.py"]
