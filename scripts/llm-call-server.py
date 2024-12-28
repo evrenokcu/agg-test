@@ -11,8 +11,8 @@ from datetime import datetime
 
 
 # Load environment variables
-env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.env"))
-load_dotenv(dotenv_path=env_path)
+# env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.env"))
+# load_dotenv(dotenv_path=env_path)
 
 # Suppress gRPC warnings
 os.environ["GRPC_VERBOSITY"] = "ERROR"
@@ -59,4 +59,4 @@ async def query_llm(request: QueryRequest):
 if __name__ == "__main__":
     import uvicorn
     
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8080)
