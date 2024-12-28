@@ -59,11 +59,5 @@ async def query_llm(request: QueryRequest):
 
 if __name__ == "__main__":
     import uvicorn
-   
-    
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--port", type=int, default=int(os.getenv("PORT", 8080)), help="Port to run the server on")
-    args = parser.parse_args()
-    
-    app.run(host="0.0.0.0", port=args.port)
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    port = int(os.getenv("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port)
