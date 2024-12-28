@@ -34,7 +34,7 @@ llms = {
     "Gemini": Gemini(api_key=os.getenv("GOOGLE_API_KEY")),
 }
 
-@app.post("/query-llm")
+@app.post("/")
 async def query_llm(request: QueryRequest):
     """
     Query the specified LLM with a given prompt and return the response as a string.
