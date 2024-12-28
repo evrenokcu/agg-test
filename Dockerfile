@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy your code
-COPY main.py .
+COPY scripts/main.py .
 
 # Expose a default port for local dev/documentation; not strictly needed for Cloud Run
 EXPOSE 8080
