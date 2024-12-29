@@ -1,20 +1,20 @@
-# Use an official Python base image
+# Use the official Python image
 FROM python:3.9-slim
 
 # Create a working directory
 WORKDIR /app
 
-# Copy requirements
+# Copy requirements.txt into the container
 COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your code
-COPY scripts/main.py .
+# Copy the source code
+COPY app2.py .
 
-# Expose a default port for local dev/documentation; not strictly needed for Cloud Run
+# We expose port 8080 for documentation (though Cloud Run configures runtime PORT envvar)
 EXPOSE 8080
 
-# Start the FastAPI app with Uvicorn using the runtime PORT environment variable
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}"]
+# Set the entrypoint to run the Flask app
+CMD ["python", "llm-call.py"]

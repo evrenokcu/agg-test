@@ -1,3 +1,4 @@
+flask
 sse-starlette
 python-dotenv
 llama-index
@@ -5,6 +6,4 @@ llama-index-llms-openai
 llama-index-llms-anthropic
 llama-index-llms-gemini
 argparse
-fastapi==0.103.2
-uvicorn==0.23.2
-pydantic==2.3.0
+uvicorn
